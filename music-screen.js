@@ -10,9 +10,9 @@
 class MusicScreen {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
-    const audioPlayer = AudioPlayer();
-    const gifDisplay = GifDisplay();
-    const playButton = PlayButton();
+    const audioPlayer = new AudioPlayer();
+    const gifDisplay = new GifDisplay();
+    const playButton = new PlayButton();
   }
   // TODO(you): Add methods as necessary.
 }
