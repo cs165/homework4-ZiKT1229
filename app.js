@@ -8,7 +8,7 @@ class App {
     this.menuScreen = new MenuScreen();
     this.musicScreen = new MusicScreen();
 
-    document.getElementById('submit').addEventListener('click', (event) => {
+    document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
       event.preventDefault();
       this.menuScreen.submit();
       this.menuScreen.hide();
