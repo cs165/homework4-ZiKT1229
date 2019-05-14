@@ -8,14 +8,17 @@ class MenuScreen {
     this.menu = document.getElementById('menu');
     this.songSelector = document.getElementById('song-selector');
     this.queryInput = document.getElementById('query-input');
-    document.getElementById('submit').addEventListener('click', (event) => {
-      event.preventDefault();
-      this.menu.classList.toggle('inactive', true);
-      this.submit();
-    });
     this.fetchSong();
   }
   // TODO(you): Add methods as necessary.
+  show() {
+    this.menu.classList.toggle('inactive', false);
+  }
+
+  hide() {
+    this.menu.classList.toggle('inactive', true);
+  }
+
   async fetchSong() {
     const url = 'https://cs165.github.io/homework4-ZiKT1229/playlist/songs.json';
 

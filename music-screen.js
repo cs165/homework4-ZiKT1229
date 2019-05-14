@@ -10,9 +10,17 @@
 class MusicScreen {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
+    this.music = document.getElementById('music');
     this.audioPlayer = new AudioPlayer();
     this.gifDisplay = new GifDisplay();
     this.playButton = new PlayButton();
   }
   // TODO(you): Add methods as necessary.
+  show() {
+    this.music.classList.toggle('inactive', false);
+  }
+
+  hide() {
+    this.music.classList.toggle('inactive', true);
+  }
 }

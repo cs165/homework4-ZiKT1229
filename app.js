@@ -7,6 +7,13 @@ class App {
     // TODO(you): Implement the constructor and add fields as necessary.
     this.menuScreen = new MenuScreen();
     this.musicScreen = new MusicScreen();
+
+    document.getElementById('submit').addEventListener('click', (event) => {
+      event.preventDefault();
+      this.menuScreen.submit();
+      this.menuScreen.hide();
+      this.musicScreen.show();
+    });
   }
   // TODO(you): Add methods as necessary.
 }
