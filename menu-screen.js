@@ -5,7 +5,14 @@
 class MenuScreen {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
+    this.menu = document.getElementById('menu');
     this.songSelector = document.getElementById('song-selector');
+    this.queryInput = document.getElementById('query-input');
+    document.getElementById('submit').addEventListener('click', (event) => {
+      event.preventDefault();
+      this.menu.classList.toggle('inactive', true);
+      this.submit();
+    });
     this.fetchSong();
   }
   // TODO(you): Add methods as necessary.
@@ -14,9 +21,9 @@ class MenuScreen {
 
     try {
       const response = await fetch(url);
-
       if (response.ok) {
         const jsonResponse = await response.json();
+        console.log(jsonResponse);
         this.render(jsonResponse);
       } else {
         throw new Error('Error!!!!!!!!!!!!!!!!!!!!!!');
@@ -28,7 +35,6 @@ class MenuScreen {
 
   render(songs) {
     Object.keys(songs).forEach((songName) => {
-      console.log(songs[songName]);
       const data = songs[songName];
       const option = this.$create('option', { 'data-url': `${data.songUrl}` }, `${data.artist} - ${data.title}`);
       this.songSelector.appendChild(option);
@@ -43,4 +49,9 @@ class MenuScreen {
     node.textContent = text;
     return node;
   };
+
+  submit() {
+    console.log(this.songSelector.options[this.songSelector.selectedIndex]);
+    console.log(this.queryInput.value);
+  }
 }
