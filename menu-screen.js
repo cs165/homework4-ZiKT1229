@@ -59,7 +59,7 @@ class MenuScreen {
   }
 
   submit() {
-    const song = this.songSelector.options[this.songSelector.selectedIndex];
+    const song = this.songSelector.options[this.songSelector.selectedIndex].dataset.url;
     const theme = this.queryInput.value;
     console.log(song);
     console.log(theme);
