@@ -13,6 +13,7 @@ class App {
       this.menuScreen.submit();
       this.menuScreen.hide();
       this.musicScreen.show();
+      this.musicScreen.gifDisplay.fetchGif(this.menuScreen.queryInput.value);
     });
   }
   // TODO(you): Add methods as necessary.

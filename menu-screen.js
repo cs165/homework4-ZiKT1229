@@ -9,6 +9,7 @@ class MenuScreen {
     this.songSelector = document.getElementById('song-selector');
     this.queryInput = document.getElementById('query-input');
     this.fetchSong();
+    this.theme();
   }
   // TODO(you): Add methods as necessary.
   show() {
@@ -21,7 +22,6 @@ class MenuScreen {
 
   async fetchSong() {
     const url = 'https://cs165.github.io/homework4-ZiKT1229/playlist/songs.json';
-
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -52,6 +52,11 @@ class MenuScreen {
     node.textContent = text;
     return node;
   };
+
+  theme() {
+    const themes = ['candy', 'charlie brown', 'computers', 'dance', 'donuts', 'hello kitty', 'flowers', 'nature', 'turtles', 'space'];
+    this.queryInput.value = themes[Math.floor(Math.random() * themes.length)];
+  }
 
   submit() {
     console.log(this.songSelector.options[this.songSelector.selectedIndex]);
