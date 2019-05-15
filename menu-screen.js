@@ -9,8 +9,12 @@ class MenuScreen {
     this.form = document.getElementsByTagName('form')[0];
     this.songSelector = document.getElementById('song-selector');
     this.queryInput = document.getElementById('query-input');
+    this.error = document.getElementById('error');
     this.fetchSong();
     this.theme();
+    this.queryInput.addEventListener('input', () => {
+      this.error.classList.add('inactive');
+    });
   }
   // TODO(you): Add methods as necessary.
   show() {
@@ -61,8 +65,8 @@ class MenuScreen {
   submit() {
     const song = this.songSelector.options[this.songSelector.selectedIndex].dataset.url;
     const theme = this.queryInput.value;
-    console.log(song);
-    console.log(theme);
+    console.log(`Song url: ${song}`);
+    console.log(`Theme: ${theme}`);
     return {
       song,
       theme

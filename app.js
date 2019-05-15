@@ -11,14 +11,20 @@ class App {
     this.menuScreen.form.addEventListener('submit', (event) => {
       event.preventDefault();
       const { song, theme } = this.menuScreen.submit();
-      this.menuScreen.hide();
-      this.musicScreen.show();
-      this.musicScreen.audioPlayer.setSong(song);
-      this.musicScreen.audioPlayer.setKickCallback(() => {
-        console.log('kick!');
-        this.musicScreen.gifDisplay.showGif();
+      this.musicScreen.gifDisplay.fetchGif(theme).then(count => {
+        console.log(`Gif count: ${count}`);
+        if (count >= 2) {
+          this.menuScreen.hide();
+          this.musicScreen.show();
+          this.musicScreen.audioPlayer.setSong(song);
+          this.musicScreen.audioPlayer.setKickCallback(() => {
+            console.log('kick!');
+            this.musicScreen.gifDisplay.showGif();
+          });
+        } else {
+          this.menuScreen.error.classList.remove('inactive');
+        }
       });
-      this.musicScreen.gifDisplay.fetchGif(theme);
     });
 
     this.musicScreen.playButton.button.addEventListener('click', () => {

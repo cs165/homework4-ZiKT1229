@@ -6,7 +6,33 @@ TODO(you): Write any additional styles you need here.
   height: 100vh;
 }
 
+.gif-wrapper {
+  height: calc(100vh - 70px);
+}
+
+#loading-wrapper {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  color: #e2e2e2;
+  font-size: 2em;
+  font-style: italic;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .gif {
+  width: 100%;
   height: calc(100vh - 70px);
   background-color: rgb(70, 70, 70);
   background-size: cover;

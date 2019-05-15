@@ -6,7 +6,10 @@ class GifDisplay {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
     this.gif = document.getElementsByClassName('gif')[0];
+    this.foreground = document.getElementsByClassName('foreground')[0];
+    this.background = document.getElementsByClassName('background')[0];
     this.gifs = [];
+    this.count = 0;
     this.index = 0;
   }
   // TODO(you): Add methods as necessary.
@@ -28,20 +31,33 @@ class GifDisplay {
     } catch (error) {
       console.log(error);
     }
+
+    return this.count;
   }
 
   analysis(jsons) {
     this.gifs = [];
+    this.count = 0;
     this.index = 0;
     jsons.forEach(json => {
+      this.count += 1;
       const gifUrl = json.images.downsized.url;
-      this.gifs.push(gifUrl);
+      const img = document.createElement('img');
+      img.src = gifUrl;
+      img.addEventListener('load', () => {
+        console.log('load success');
+        this.gifs.push(img);
+        if (this.gifs.length === this.count) {
+          console.log('all load success');
+          document.getElementById('loading-wrapper').classList.add('inactive');
+          this.showGif();
+        }
+      });
     });
-    this.showGif();
   }
 
   showGif() {
-    this.gif.style.backgroundImage = `url(${this.gifs[this.index]})`;
+    this.gif.style.backgroundImage = `url(${this.gifs[this.index].src})`;
     this.index = (this.index + 1) % this.gifs.length;
   }
 }
