@@ -5,7 +5,8 @@
 class GifDisplay {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
-    this.gif = [];
+    this.gif = document.getElementsByClassName('gif')[0];
+    this.gifs = [];
     this.index = 0;
   }
   // TODO(you): Add methods as necessary.
@@ -30,16 +31,17 @@ class GifDisplay {
   }
 
   analysis(jsons) {
-    this.gif = [];
+    this.gifs = [];
+    this.index = 0;
     jsons.forEach(json => {
       const gifUrl = json.images.downsized.url;
-      this.gif.push(gifUrl);
+      this.gifs.push(gifUrl);
     });
     this.showGif();
   }
 
   showGif() {
-    document.getElementsByClassName('gif')[0].style.backgroundImage = `url(${this.gif[this.index]})`;
-    this.index = (this.index + 1) % this.gif.length;
+    this.gif.style.backgroundImage = `url(${this.gifs[this.index]})`;
+    this.index = (this.index + 1) % this.gifs.length;
   }
 }
