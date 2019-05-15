@@ -6,6 +6,7 @@ class GifDisplay {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
     this.gif = [];
+    this.index = 0;
   }
   // TODO(you): Add methods as necessary.
   async fetchGif(theme) {
@@ -19,7 +20,7 @@ class GifDisplay {
       const response = await fetch(endpoint);
       if (response.ok) {
         const jsonResponse = await response.json();
-        this.render(jsonResponse.data);
+        this.analysis(jsonResponse.data);
       } else {
         throw new Error('Error!!!!!!!!!!!!!!!!!!!!!!');
       }
@@ -28,13 +29,17 @@ class GifDisplay {
     }
   }
 
-  render(jsons) {
+  analysis(jsons) {
     this.gif = [];
     jsons.forEach(json => {
       const gifUrl = json.images.downsized.url;
-      console.log(`url: ${gifUrl}`);
       this.gif.push(gifUrl);
     });
-    document.getElementsByClassName('gif')[0].style.backgroundImage = `url(${this.gif[Math.floor(Math.random() * this.gif.length)]})`;
+    this.showGif();
+  }
+
+  showGif() {
+    document.getElementsByClassName('gif')[0].style.backgroundImage = `url(${this.gif[this.index]})`;
+    this.index = (this.index + 1) % this.gif.length;
   }
 }

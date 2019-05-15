@@ -8,12 +8,30 @@ class App {
     this.menuScreen = new MenuScreen();
     this.musicScreen = new MusicScreen();
 
-    document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
+    this.menuScreen.form.addEventListener('submit', (event) => {
       event.preventDefault();
       const { song, theme } = this.menuScreen.submit();
       this.menuScreen.hide();
       this.musicScreen.show();
+      this.musicScreen.audioPlayer.setSong(song);
+      this.musicScreen.audioPlayer.setKickCallback(() => {
+        console.log('kick!');
+        this.musicScreen.gifDisplay.showGif();
+      });
       this.musicScreen.gifDisplay.fetchGif(theme);
+    });
+
+    this.musicScreen.playButton.button.addEventListener('click', () => {
+      this.musicScreen.playButton.behavior = !this.musicScreen.playButton.behavior;
+      this.musicScreen.playButton.button.classList.toggle('play');
+      this.musicScreen.playButton.button.classList.toggle('pause');
+      if (this.musicScreen.playButton.behavior) {
+        console.log('Play the music');
+        this.musicScreen.audioPlayer.play();
+      } else {
+        console.log('Pause the music');
+        this.musicScreen.audioPlayer.pause();
+      }
     });
   }
   // TODO(you): Add methods as necessary.

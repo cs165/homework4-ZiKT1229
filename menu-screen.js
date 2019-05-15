@@ -6,6 +6,7 @@ class MenuScreen {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
     this.menu = document.getElementById('menu');
+    this.form = document.getElementsByTagName('form')[0];
     this.songSelector = document.getElementById('song-selector');
     this.queryInput = document.getElementById('query-input');
     this.fetchSong();
@@ -26,7 +27,6 @@ class MenuScreen {
       const response = await fetch(url);
       if (response.ok) {
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
         this.render(jsonResponse);
       } else {
         throw new Error('Error!!!!!!!!!!!!!!!!!!!!!!');

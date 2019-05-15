@@ -5,6 +5,8 @@
 class PlayButton {
   constructor() {
     // TODO(you): Implement the constructor and add fields as necessary.
+    this.button = document.getElementsByClassName('button')[0];
+    this.behavior = false;
   }
   // TODO(you): Add methods as necessary.
 }
