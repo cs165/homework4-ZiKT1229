@@ -10,10 +10,10 @@ class App {
 
     document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
       event.preventDefault();
-      this.menuScreen.submit();
+      const { song, theme } = this.menuScreen.submit();
       this.menuScreen.hide();
       this.musicScreen.show();
-      this.musicScreen.gifDisplay.fetchGif(this.menuScreen.queryInput.value);
+      this.musicScreen.gifDisplay.fetchGif(theme);
     });
   }
   // TODO(you): Add methods as necessary.

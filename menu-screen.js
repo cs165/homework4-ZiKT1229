@@ -59,7 +59,13 @@ class MenuScreen {
   }
 
   submit() {
-    console.log(this.songSelector.options[this.songSelector.selectedIndex]);
-    console.log(this.queryInput.value);
+    const song = this.songSelector.options[this.songSelector.selectedIndex];
+    const theme = this.queryInput.value;
+    console.log(song);
+    console.log(theme);
+    return {
+      song,
+      theme
+    };
   }
 }
