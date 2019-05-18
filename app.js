@@ -28,9 +28,7 @@ class App {
     });
 
     this.musicScreen.playButton.button.addEventListener('click', () => {
-      this.musicScreen.playButton.behavior = !this.musicScreen.playButton.behavior;
-      this.musicScreen.playButton.button.classList.toggle('play');
-      this.musicScreen.playButton.button.classList.toggle('pause');
+      this.musicScreen.playButton.changeButton();
       if (this.musicScreen.playButton.behavior) {
         console.log('Play the music');
         this.musicScreen.audioPlayer.play();

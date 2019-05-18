@@ -9,4 +9,9 @@ class PlayButton {
     this.behavior = false;
   }
   // TODO(you): Add methods as necessary.
+  changeButton() {
+    this.behavior = !this.behavior;
+    this.button.classList.toggle('play');
+    this.button.classList.toggle('pause');
+  }
 }

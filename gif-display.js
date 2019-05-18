@@ -49,6 +49,7 @@ class GifDisplay {
         this.gifs.push(img);
         if (this.gifs.length === this.count) {
           console.log('all load success');
+        } else if (this.gifs.length === 2) {
           document.getElementById('loading-wrapper').classList.add('inactive');
           this.showGif();
         }
